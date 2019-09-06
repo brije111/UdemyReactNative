@@ -8,36 +8,36 @@ import BoxScreen from './src/screens/BoxScreen';
 import PlaceSearchScreen from './src/screens/PlaceSearchScreen';
 
 const routeConfigs = {
-  Home:{
-    screen:HomeScreen,
-    navigationOptions:()=>({
-      title:'Home'
-    })
-  },
-  List:{
-    screen:ListScreen,
-    navigationOptions:()=>({
-      title:'Friends List'
-    })
-  },
-  Color:{
-    screen: ColorScreen,
-    navigationOptions: ()=>({
-      title:'Color List'
-    })
-  },
-  Counter:{
-    screen:CounterScreen,
-    navigationOptions: ()=>({
-      title:'Counter Activity'
-    })
-  },
-  Box:{
-    screen:BoxScreen,
-    navigationOptions: ()=>({
-      title:'Box Activity'
-    })
-  },
+  // Home:{
+  //   screen:HomeScreen,
+  //   navigationOptions:()=>({
+  //     title:'Home'
+  //   })
+  // },
+  // List:{
+  //   screen:ListScreen,
+  //   navigationOptions:()=>({
+  //     title:'Friends List'
+  //   })
+  // },
+  // Color:{
+  //   screen: ColorScreen,
+  //   navigationOptions: ()=>({
+  //     title:'Color List'
+  //   })
+  // },
+  // Counter:{
+  //   screen:CounterScreen,
+  //   navigationOptions: ()=>({
+  //     title:'Counter Activity'
+  //   })
+  // },
+  // Box:{
+  //   screen:BoxScreen,
+  //   navigationOptions: ()=>({
+  //     title:'Box Activity'
+  //   })
+  // },
   PlaceSearch:{
     screen:PlaceSearchScreen,
     navigationOptions: ()=>({
@@ -49,7 +49,7 @@ const routeConfigs = {
 const stackNavigatorConfig = {
   initialRootName:'PlaceSearch',
   defaulNavigationOption:()=>({
-    title:'Awesome App'
+    title:'Restaurant Search Activity'
   })
 }
 

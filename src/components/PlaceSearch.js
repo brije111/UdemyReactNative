@@ -1,34 +1,45 @@
 import React, { useState } from'react';
-import {View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import Axios from 'axios';
+import axios from '../api/google';
+import PlaceSearchList from '../components/PlaceSearchList';
+import { getCurrentLocation } from './Utils';
+
 
 const PlaceSearch = () => {
     const [searchTerm, setsearchTerm] = useState('');
     const [results, setresults] = useState([]);
 
-    // const searchApi = async () => {
-    //     const response = await Axios.get('/nearbysearch/json', {
-    //         params:{
-    //             location:'26.8758165,81.0202525',
-    //             radius:1000,
-    //             type:'restaurant',
-    //             keyword:'restaurants',
-    //             key:'AIzaSyCxA-p-HoKomogx2Z92AmRQaugS-9vCwgU'
-    //         }
-    //     });
-    //     setresults(response.data);
-    // }
+    // getCurrentLocation((response)=> {
+    //     console.log(response);
+    // });
+
+    const searchApi = async () => {
+        const response = await axios.get('/nearbysearch/json', {
+            params:{
+                location:'26.8758165,81.0202525',
+                radius:1000,
+                type:'restaurant',
+                keyword:searchTerm,
+                key:'AIzaSyCxA-p-HoKomogx2Z92AmRQaugS-9vCwgU'
+            }
+        });
+
+        //update state only if status is OK
+        if(response.data.status === "OK")
+            setresults(response.data.results);
+    }
 
     return <View>
         <SearchBar placeholder='Type here...'
             onChangeText={(search)=> {
                 setsearchTerm(search)
             }}
-            // onSubmitEditing={searchApi}
+            onSubmitEditing={searchApi}
             value={searchTerm}
+            lightTheme='true'
         />
-        <Text>{results}</Text>
+        <PlaceSearchList results={results}/>
     </View>
 }
 
