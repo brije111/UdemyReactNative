@@ -41,7 +41,7 @@ const routeConfigs = {
   PlaceSearch:{
     screen:PlaceSearchScreen,
     navigationOptions: ()=>({
-      title:'Google Place Search Activity'
+      title:'Google Restaurant Search'
     })
   }
 }

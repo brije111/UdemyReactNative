@@ -4,7 +4,7 @@ import {FontAwesome} from '@expo/vector-icons';
 
 const PlaceSearchListItem = ({place}) => {
     console.log(place.photos[0].photo_reference);
-    return <View>
+    return <View style={style.view}>
         <Image 
             style={style.image} 
             source={{uri:`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${place.photos[0].photo_reference}&key=AIzaSyCxA-p-HoKomogx2Z92AmRQaugS-9vCwgU`}}
