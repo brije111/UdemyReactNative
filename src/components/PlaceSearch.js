@@ -1,50 +1,41 @@
-import React, { useState } from'react';
-import {Text, View, StyleSheet} from 'react-native';
-import { SearchBar } from 'react-native-elements';
-import axios from '../api/google';
-import PlaceSearchList from '../components/PlaceSearchList';
-import { getCurrentLocation } from './Utils';
+import React from'react';
+import {TextInput, View, StyleSheet} from 'react-native';
+import {Feather} from '@expo/vector-icons';
 
 
-const PlaceSearch = () => {
-    const [searchTerm, setsearchTerm] = useState('');
-    const [results, setresults] = useState([]);
-
-    // getCurrentLocation((response)=> {
-    //     console.log(response);
-    // });
-
-    const searchApi = async () => {
-        const response = await axios.get('/nearbysearch/json', {
-            params:{
-                location:'26.8758165,81.0202525',
-                radius:1000,
-                type:'restaurant',
-                keyword:searchTerm,
-                key:'AIzaSyCxA-p-HoKomogx2Z92AmRQaugS-9vCwgU'
-            }
-        });
-
-        //update state only if status is OK
-        if(response.data.status === "OK")
-            setresults(response.data.results);
-    }
-
-    return <View>
-        <SearchBar placeholder='Type here...'
-            onChangeText={(search)=> {
-                setsearchTerm(search)
-            }}
-            onSubmitEditing={searchApi}
-            value={searchTerm}
-            lightTheme='true'
+const PlaceSearch = ({searchTerm, onChangeText, onSubmitEditing}) => {
+    
+    return <View style={styles.backgroundStyle}>
+        <Feather 
+            name='search' 
+            size={32}
+            style={styles.icon}
         />
-        <PlaceSearchList results={results}/>
+        <TextInput 
+            autoCorrect={false}
+            placeholder="Type here..."
+            style={styles.textInputStyle} 
+            onChangeText={(text)=>onChangeText(text)}
+            onSubmitEditing={onSubmitEditing}
+            value={searchTerm}
+            />
     </View>
 }
 
 const styles = StyleSheet.create({
-
+    textInputStyle:{
+        height:40,
+        marginStart:5,
+        fontSize:20,
+        flex:1
+    },
+    backgroundStyle:{
+        margin:10,
+        padding:5,
+        flexDirection:'row',
+        backgroundColor:'#EEEEEE',
+        alignItems:"center"
+    }
 });
 
 export default PlaceSearch;

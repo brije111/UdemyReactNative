@@ -5,7 +5,7 @@ import PlaceSearchListItem from './PlaceSearchListItem';
 const PlaceSearchList = ({results}) => {
     console.log(results);
     return <View>
-        {results.map(item => <PlaceSearchListItem place={item} />)}
+        {results.map(item => <PlaceSearchListItem key={item.id} place={item} />)}
     </View>
 }
 
